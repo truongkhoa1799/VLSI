@@ -1,0 +1,79 @@
+module MAIN(clk, reset, flick, LED, state);
+input clk, reset, flick;
+output [15:0]LED;
+output [1:0]state;
+
+reg [3:0]max_array[5:0];
+reg [3:0]min_array[5:0];
+reg [3:0]flick_pos[1:0];
+reg [15:0]temp_led;
+reg [3:0]current_index;
+parameter IDLE = 2'd0, GO_UP = 2'd1, GO_DOWN = 2'd2;
+
+assign max_value = max_array[current_index];
+assign min_value = min_array[current_index];
+assign LED = temp_led;
+
+initial begin
+    max_array[0] = 4'd15;
+    max_array[1] = 4'd0;
+    max_array[2] = 4'd10;
+    max_array[3] = 4'd0;
+    max_array[4] = 4'd5;
+    max_array[5] = 4'd0; 
+
+    min_array[0] = 4'd0;
+    min_array[1] = 4'd5;
+    min_array[2] = 4'd0;
+    min_array[3] = 4'd0;
+    min_array[4] = 4'd0;
+    min_array[5] = 4'd0; 
+
+    state = IDLE;
+end
+
+always@( posedge reset )
+begin
+    if ( reset == 1 && state != IDLE ) begin
+	    current_index <= 4'd0;
+		state <= GO_UP; 
+	end
+end
+
+always@( posedge flick )
+begin
+    if ( flick ) begin
+		if ( state == GO_DOWN && ( current_index == flick_pos[0] || current_index == flick_pos[1] ) ) begin
+			state <= GO_UP;
+			current_index <= current_index - 1;
+		end
+		else if ( state == IDLE ) begin
+			state <= GO_UP;
+			current_index <= 1'd0; 		
+		end
+	end
+end
+
+always@( posedge clk )
+begin
+    case( state )
+        GO_UP:
+            begin
+                if ( LED == max_value ) begin 
+                    state <= GO_DOWN; 
+                    current_index <= current_index + 1; 
+                end
+                else temp_led <= temp_led + 1;
+            end
+        GO_DOWN:
+            begin
+                if ( LED == min_value ) begin 
+                    state <= GO_UP; 
+                    current_index <= current_index + 1; 
+                    end
+                else temp_led <= temp_led - 1;
+            end
+    endcase
+end
+
+endmodule
