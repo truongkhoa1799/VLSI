@@ -4,6 +4,11 @@ module test_bench();
     wire [1:0]state;
     wire [2:0]current_index;
     // wire pulse_flick;
+    
+    initial begin
+       $recordfile("waves");
+       $recordvars("depth=0",test_bench);
+    end
 
     initial begin
         $display("----------------------------------------------------------------");
@@ -55,7 +60,7 @@ module test_bench();
         #20 flick <= 1'b1;
         #2 flick <= 1'b0;
 
-        #2000 $stop;
+        #2000 $finish;
     end
 
     initial begin 
