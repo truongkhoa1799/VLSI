@@ -108,6 +108,8 @@ end
 always@(posedge clk, negedge reset, posedge flick_trigger) begin
     if (!reset) begin
         current_state = BEGIN;
+        current_LED = 5'd0;
+        current_index = 3'd0;
     end
     else if (clk) begin
         current_state = next_state;
