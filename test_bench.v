@@ -67,7 +67,7 @@ module test_bench();
         forever #5 clk = !clk; 
     end
 
-    MAIN main(   
+    Bound_Flasher testbench(   
         .clk(clk), 
         .reset(reset), 
         .flick(flick), 
