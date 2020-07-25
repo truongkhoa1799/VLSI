@@ -1,9 +1,8 @@
 module test_bench();
     reg clk, reset, flick;
     wire [15:0]LED;
-    //wire [1:0]state;
-    //wire [2:0]current_index;
-    // wire pulse_flick;
+    wire [1:0]state;
+    wire [2:0]current_index;
     
     initial begin
        $recordfile("waves");
@@ -35,18 +34,25 @@ module test_bench();
         #50 reset <= 1'b1;
 
         #2 flick <= 1'b1;
-        #2 flick <= 1'b0;
+        #1 flick <= 1'b0;
 
         #50 flick <= 1'b1;
+        #1 flick <= 1'b0;
+        
+        #159 flick <= 1'b1;
+        #1 flick <= 1'b0;
+
+        
+        #47 flick <= 1'b1;
+        #1 flick <= 1'b0;
+
+        #375 flick <= 1'b1;
         #2 flick <= 1'b0;
 
-        #213 flick <= 1'b1;
+        #358 flick <= 1'b1;
         #2 flick <= 1'b0;
 
-        #378 flick <= 1'b1;
-        #2 flick <= 1'b0;
-
-        #550 flick <= 1'b1;
+        #190 flick <= 1'b1;
         #2 flick <= 1'b0;
 
         #143 flick <= 1'b1;
@@ -71,9 +77,9 @@ module test_bench();
         .clk(clk), 
         .reset(reset), 
         .flick(flick), 
-        .LED(LED)
-        //.current_state(state),
-        //.current_index(current_index)
+        .LED(LED),
+        .current_state(state),
+        .current_index(current_index)
         // .pulse_flick(pulse_flick)
     );
 endmodule
