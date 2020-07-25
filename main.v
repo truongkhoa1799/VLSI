@@ -24,18 +24,31 @@ reg [3:0]final_index;
 wire [4:0]max_value;
 wire [4:0]min_value;
 
+//-----------------------------------------------------------------------//
+//                     States used for this program                      //
+//-----------------------------------------------------------------------//
 parameter IDLE = 2'b00, GO_UP = 2'b01, GO_DOWN = 2'b10;
+
 
 assign max_value = max_array[current_index];
 assign min_value = min_array[current_index];
 assign LED = (16'd1 << current_LED) - 1;
 
+//-----------------------------------------------------------------------//
+//                  Check flick trigger Combinational Logic              //
+//-----------------------------------------------------------------------//
 assign flick_trigger = ( ( current_state == IDLE && reset ) || ( current_state == GO_DOWN & current_index != ( final_index - 1 ) & (current_LED == flick_pos[0] || current_LED == flick_pos[1]) )) ? flick : 0;
 
+//-----------------------------------------------------------------------//
+//      Calculating input when flicking button Combinational Logic       //
+//-----------------------------------------------------------------------//
 assign flick_index = ( current_state == IDLE ) ? 2'd0 : ( current_index - 1 );
 assign flick_led = ( current_state == IDLE ) ? 5'd1 : ( current_LED + 1 );
 assign flick_state = GO_UP;
 
+//-----------------------------------------------------------------------//
+//                      Init parameters for module                       //
+//-----------------------------------------------------------------------//
 initial begin
     max_array[0] = 5'd16;
     max_array[1] = 5'd0;
@@ -57,6 +70,9 @@ initial begin
     final_index = 3'd6;
 end
 
+//-----------------------------------------------------------------------//
+//          Calculating input for normal flow Combinational Logic        //
+//-----------------------------------------------------------------------//
 always@( * ) begin
     if (reset) begin
         case (current_state)
@@ -99,7 +115,9 @@ always@( * ) begin
     end
 end
 
-
+//-----------------------------------------------------------------------//
+//                        Bound_Flasher Flip-Flop                        //
+//-----------------------------------------------------------------------//
 always@(posedge clk or negedge reset or posedge flick_trigger) begin
     if (!reset) begin
         current_state <= IDLE;
