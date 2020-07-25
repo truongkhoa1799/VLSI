@@ -1,8 +1,8 @@
 module test_bench();
     reg clk, reset, flick;
     wire [15:0]LED;
-    wire [1:0]state;
-    wire [2:0]current_index;
+    //wire [1:0]state;
+    //wire [2:0]current_index;
     // wire pulse_flick;
     
     initial begin
@@ -40,7 +40,7 @@ module test_bench();
         #50 flick <= 1'b1;
         #2 flick <= 1'b0;
 
-        #203 flick <= 1'b1;
+        #213 flick <= 1'b1;
         #2 flick <= 1'b0;
 
         #378 flick <= 1'b1;
@@ -71,9 +71,9 @@ module test_bench();
         .clk(clk), 
         .reset(reset), 
         .flick(flick), 
-        .LED(LED),
-        .current_state(state),
-        .current_index(current_index)
+        .LED(LED)
+        //.current_state(state),
+        //.current_index(current_index)
         // .pulse_flick(pulse_flick)
     );
 endmodule

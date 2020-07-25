@@ -1,9 +1,9 @@
-module Bound_Flasher(clk, reset, flick, LED, current_state, current_index);
+module Bound_Flasher(clk, reset, flick, LED);
 input clk, reset, flick;
 output [15:0]LED;
 
-output reg [1:0]current_state;
-output reg [2:0]current_index;
+reg [1:0]current_state;
+reg [2:0]current_index;
 
 reg [1:0]next_state;
 reg [2:0]next_index;
@@ -13,6 +13,7 @@ reg [4:0]current_LED;
 wire [2:0]flick_index;
 wire [4:0]flick_led;
 wire [1:0]flick_state;
+wire flick_trigger;
 
 reg [4:0]max_array[5:0];
 reg [4:0]min_array[5:0];
@@ -21,8 +22,8 @@ reg [4:0]flick_pos[1:0];
 reg [3:0]final_index;
 
 // reg pulse_flick;
-reg temp;
-reg temp_pulse;
+//reg temp;
+//reg temp_pulse;
 
 wire [4:0]max_value;
 wire [4:0]min_value;
@@ -62,13 +63,9 @@ always@( * ) begin
 
                 final_index = 3'd6;
 
-                current_LED = 5'd0;
-                current_index = 3'd0;
-                current_state = IDLE;
-
-                next_LED = current_LED;
-                next_index = current_index;
-                next_state = current_state;
+                next_LED = 5'd0;
+                next_index = 3'd0;
+                next_state = IDLE;
             end
             GO_UP: begin
                 if (current_LED < max_value) begin
@@ -105,21 +102,21 @@ always@( * ) begin
 end
 
 
-always@(posedge clk, negedge reset, posedge flick_trigger) begin
+always@(posedge clk or negedge reset or posedge flick_trigger) begin
     if (!reset) begin
-        current_state = BEGIN;
-        current_LED = 5'd0;
-        current_index = 3'd0;
-    end
-    else if (clk) begin
-        current_state = next_state;
-        current_index = next_index;
-        current_LED = next_LED;
+        current_state <= BEGIN;
+        current_LED <= 5'd0;
+        current_index <= 3'd0;
     end
     else if (flick_trigger) begin
-        current_state = flick_state;
-        current_index = flick_index;
-        current_LED = flick_led;
+        current_state <= flick_state;
+        current_index <= flick_index;
+        current_LED <= flick_led;
+    end
+    else begin
+        current_state <= next_state;
+        current_index <= next_index;
+        current_LED <= next_LED;
     end
 end
 
