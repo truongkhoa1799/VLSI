@@ -1,4 +1,4 @@
-module MAIN(clk, reset, flick, LED, current_state, current_index);
+module Bound_Flasher(clk, reset, flick, LED, current_state, current_index);
 input clk, reset, flick;
 output [15:0]LED;
 
