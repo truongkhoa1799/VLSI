@@ -1,9 +1,9 @@
-module Bound_Flasher(clk, reset, flick, LED, current_state, current_index);
+module Bound_Flasher(clk, reset, flick, LED/*, current_state, current_index*/);
 input clk, reset, flick;
 output [15:0]LED;
 
-output reg [1:0]current_state;
-output reg [2:0]current_index;
+/*output*/ reg [1:0]current_state;
+/*output*/ reg [2:0]current_index;
 
 reg [1:0]next_state;
 reg [2:0]next_index;
@@ -28,7 +28,6 @@ wire [4:0]min_value;
 //                     States used for this program                      //
 //-----------------------------------------------------------------------//
 parameter IDLE = 2'b00, GO_UP = 2'b01, GO_DOWN = 2'b10;
-
 
 assign max_value = max_array[current_index];
 assign min_value = min_array[current_index];
@@ -114,6 +113,7 @@ always@( * ) begin
         endcase    
     end
 end
+
 
 //-----------------------------------------------------------------------//
 //                        Bound_Flasher Flip-Flop                        //
