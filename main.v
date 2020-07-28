@@ -27,7 +27,7 @@ wire [4:0]min_value;
 //-----------------------------------------------------------------------//
 //                     States used for this program                      //
 //-----------------------------------------------------------------------//
-parameter IDLE = 2'b00, GO_UP = 2'b01, GO_DOWN = 2'b10;
+parameter IDLE = 2'b00, GO_UP = 2'b01, GO_DOWN = 2'b10, BEGIN = 2'b11;
 
 assign max_value = max_array[current_index];
 assign min_value = min_array[current_index];
@@ -46,35 +46,35 @@ assign flick_led = ( current_state == IDLE ) ? 5'd1 : ( current_LED + 1 );
 assign flick_state = GO_UP;
 
 //-----------------------------------------------------------------------//
-//                      Init parameters for module                       //
-//-----------------------------------------------------------------------//
-initial begin
-    max_array[0] = 5'd16;
-    max_array[1] = 5'd0;
-    max_array[2] = 5'd11;
-    max_array[3] = 5'd0;
-    max_array[4] = 5'd6;
-    max_array[5] = 5'd0; 
-
-    min_array[0] = 5'd0;
-    min_array[1] = 5'd6;
-    min_array[2] = 5'd0;
-    min_array[3] = 5'd0;
-    min_array[4] = 5'd0;
-    min_array[5] = 5'd0; 
-
-    flick_pos[0] = 5'd0;
-    flick_pos[1] = 5'd6;
-
-    final_index = 3'd6;
-end
-
-//-----------------------------------------------------------------------//
 //          Calculating input for normal flow Combinational Logic        //
 //-----------------------------------------------------------------------//
 always@( * ) begin
     if (reset) begin
         case (current_state)
+            BEGIN: begin
+                max_array[0] = 5'd16;
+                max_array[1] = 5'd0;
+                max_array[2] = 5'd11;
+                max_array[3] = 5'd0;
+                max_array[4] = 5'd6;
+                max_array[5] = 5'd0; 
+
+                min_array[0] = 5'd0;
+                min_array[1] = 5'd6;
+                min_array[2] = 5'd0;
+                min_array[3] = 5'd0;
+                min_array[4] = 5'd0;
+                min_array[5] = 5'd0; 
+
+                flick_pos[0] = 5'd0;
+                flick_pos[1] = 5'd6;
+
+                final_index = 3'd6;
+
+                next_LED = 5'd0;
+                next_index = 3'd0;
+                next_state = IDLE;
+            end
             IDLE: begin
                 next_LED = 5'd0;
                 next_index = 3'd0;
@@ -120,9 +120,16 @@ end
 //-----------------------------------------------------------------------//
 always@(posedge clk or negedge reset or posedge flick_trigger) begin
     if (!reset) begin
-        current_state <= IDLE;
-        current_LED <= 5'd0;
-        current_index <= 3'd0;
+        if (current_state == IDLE || current_state == GO_DOWN || current_state == GO_UP) begin
+            current_state <= IDLE;
+            current_LED <= 5'd0;
+            current_index <= 3'd0;
+        end
+        else begin
+            current_state <= BEGIN;
+            current_LED <= 5'd0;
+            current_index <= 3'd0;
+        end
     end
     else begin
         if (flick_trigger) begin
