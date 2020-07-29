@@ -19,8 +19,11 @@ module test_bench();
         #0 flick <= 1'b0;
         #0 reset <= 1'b1;
 
-        #2 reset <= 1'b0;
-        #2 reset <= 1'b1;
+        #1 reset <= 1'b0;
+        #1 reset <= 1'b1;
+
+        #1 flick <= 1'b1;
+        #1 flick <= 1'b0;
 
         #2 flick <= 1'b1;
         #2 flick <= 1'b0;
@@ -38,44 +41,184 @@ module test_bench();
 
         #2 flick <= 1'b1;
         #1 flick <= 1'b0;
-
-        #50 flick <= 1'b1;
-        #1 flick <= 1'b0;
         
-        #159 flick <= 1'b1;
+        #256 flick <= 1'b1;
         #1 flick <= 1'b0;
 
-        
-        #47 flick <= 1'b1;
-        #1 flick <= 1'b0;
+        #300 flick <= 1'b1;
+        #2 flick <= 1'b0;
 
-        #375 flick <= 1'b1;
+        #150 flick <= 1'b1;
         #2 flick <= 1'b0;
 
         #358 flick <= 1'b1;
         #2 flick <= 1'b0;
 
-        #190 flick <= 1'b1;
-        #2 flick <= 1'b0;
-
-        #143 flick <= 1'b1;
-        #2 flick <= 1'b0;
-
-        #38 reset <= 1'b0;
-        #20 flick <= 1'b1;
+        #370 reset <= 1'b0;
+        #25 flick <= 1'b1;
         #2 flick <= 1'b0;
         #50 reset <= 1'b1;
 
         #20 flick <= 1'b1;
         #2 flick <= 1'b0;
 
-        #270 flick <= 1'b1;
+        #535 flick <= 1'b1;
         #1 flick <= 1'b0;
 
-        #180 flick <= 1'b1;
+        #100 flick <= 1'b1;
         #1 flick <= 1'b0;
 
-        #180 flick <= 1'b1;
+        #11 flick <= 1'b1;
+        #1 flick <= 1'b0;
+
+        #9 flick <= 1'b1;
+        #1 flick <= 1'b0;
+
+        #9 flick <= 1'b1;
+        #1 flick <= 1'b0;
+
+        #9 flick <= 1'b1;
+        #1 flick <= 1'b0;
+
+        #9 flick <= 1'b1;
+        #1 flick <= 1'b0;
+
+        #9 flick <= 1'b1;
+        #1 flick <= 1'b0;
+
+        #9 flick <= 1'b1;
+        #1 flick <= 1'b0;
+
+        #9 flick <= 1'b1;
+        #1 flick <= 1'b0;
+
+        #9 flick <= 1'b1;
+        #1 flick <= 1'b0;
+
+        #9 flick <= 1'b1;
+        #1 flick <= 1'b0;
+
+        #9 flick <= 1'b1;
+        #1 flick <= 1'b0;
+
+        #9 flick <= 1'b1;
+        #1 flick <= 1'b0;
+
+        #9 flick <= 1'b1;
+        #1 flick <= 1'b0;
+
+        #9 flick <= 1'b1;
+        #1 flick <= 1'b0;
+
+        #9 flick <= 1'b1;
+        #1 flick <= 1'b0;
+
+        #9 flick <= 1'b1;
+        #1 flick <= 1'b0;
+
+        #9 flick <= 1'b1;
+        #1 flick <= 1'b0;
+
+        #9 flick <= 1'b1;
+        #1 flick <= 1'b0;
+
+        #9 flick <= 1'b1;
+        #1 flick <= 1'b0;
+
+        #9 flick <= 1'b1;
+        #1 flick <= 1'b0;
+
+        #9 flick <= 1'b1;
+        #1 flick <= 1'b0;
+
+        #9 flick <= 1'b1;
+        #1 flick <= 1'b0;
+
+        #9 flick <= 1'b1;
+        #1 flick <= 1'b0;
+
+        #9 flick <= 1'b1;
+        #1 flick <= 1'b0;
+
+        #9 flick <= 1'b1;
+        #1 flick <= 1'b0;
+
+        #19 flick <= 1'b1;
+        #1 flick <= 1'b0;
+
+        #9 flick <= 1'b1;
+        #1 flick <= 1'b0;
+
+        #9 flick <= 1'b1;
+        #1 flick <= 1'b0;
+
+        #9 flick <= 1'b1;
+        #1 flick <= 1'b0;
+
+        #9 flick <= 1'b1;
+        #1 flick <= 1'b0;
+
+        #9 flick <= 1'b1;
+        #1 flick <= 1'b0;
+
+        #9 flick <= 1'b1;
+        #1 flick <= 1'b0;
+
+        #9 flick <= 1'b1;
+        #1 flick <= 1'b0;
+
+        #9 flick <= 1'b1;
+        #1 flick <= 1'b0;
+
+        #19 flick <= 1'b1;
+        #1 flick <= 1'b0;
+
+        #9 flick <= 1'b1;
+        #1 flick <= 1'b0;
+
+        #9 flick <= 1'b1;
+        #1 flick <= 1'b0;
+
+        #9 flick <= 1'b1;
+        #1 flick <= 1'b0;
+        
+        #9 flick <= 1'b1;
+        #1 flick <= 1'b0;
+
+        #19 flick <= 1'b1;
+        #1 flick <= 1'b0;
+
+        #9 flick <= 1'b1;
+        #1 flick <= 1'b0;
+
+        #9 flick <= 1'b1;
+        #1 flick <= 1'b0;
+
+        #9 flick <= 1'b1;
+        #1 flick <= 1'b0;
+
+        #9 flick <= 1'b1;
+        #1 flick <= 1'b0;
+        
+        #9 flick <= 1'b1;
+        #1 flick <= 1'b0;
+
+        #9 flick <= 1'b1;
+        #1 flick <= 1'b0;
+
+        #9 flick <= 1'b1;
+        #1 flick <= 1'b0;
+
+        #9 flick <= 1'b1;
+        #1 flick <= 1'b0;
+
+        #9 flick <= 1'b1;
+        #1 flick <= 1'b0;
+        
+        #9 flick <= 1'b1;
+        #1 flick <= 1'b0;
+
+        #9 flick <= 1'b1;
         #1 flick <= 1'b0;
 
         #2000 $finish;

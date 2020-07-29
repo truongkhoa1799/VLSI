@@ -20,7 +20,6 @@ reg [15:0]min_array[5:0];
 reg [15:0]flick_pos[1:0];
 reg [3:0]final_index;
 
-
 //-----------------------------------------------------------------------//
 //                     States used for this program                      //
 //-----------------------------------------------------------------------//
@@ -69,35 +68,36 @@ always@( * ) begin
                 next_state = IDLE;
             end
             GO_UP: begin
-                if (LED < max_array[current_index]) begin
+                if ( LED == max_array[current_index] ) begin
+                    next_state = GO_DOWN;
+                    next_index = current_index + 1;
+                    next_LED = ( LED >> 1'd1 );
+                end
+                else begin
                     next_LED = ( LED << 1'd1 )  | 1'd1;
                     next_index = current_index;
                     next_state = current_state;
                 end
-                else if (LED == max_array[current_index]) begin
-                    next_state = GO_DOWN;
-                    next_index = current_index + 1;
-                    next_LED = LED;
-                end
             end 
             GO_DOWN: begin
-                if (LED > min_array[current_index]) begin
-                    next_LED = ( LED >> 1'd1 );
-                    next_index = current_index;
-                    next_state = current_state;
-                end
-                else if (LED == min_array[current_index]) begin
+                if ( LED == min_array[current_index] ) begin
                     next_state = GO_UP;
                     next_index = current_index + 1;
-                    next_LED = LED;
                     
                     if ( next_index == final_index ) begin 
                         next_index = 3'd0;
                         next_state = IDLE;
                         next_LED = 16'd0;
                     end
+                    else begin
+                        next_LED = ( LED << 1'd1 )  | 1'd1;
+                    end
                 end
-
+                else begin
+                    next_LED = ( LED >> 1'd1 );
+                    next_index = current_index;
+                    next_state = current_state;
+                end
             end
         endcase    
     end
@@ -123,11 +123,10 @@ always@(posedge clk or negedge reset or posedge flick_trigger) begin
     else begin
         if (flick_trigger) begin
             if (current_state == IDLE) begin
-                LED <= 16'd1;
+                LED <= 16'd0;
                 current_index <= 2'd0;
             end
             else begin
-                LED <= ( LED << 1'd1 ) | 1'd1;
                 current_index <= current_index - 1;
             end
             current_state <= GO_UP;
