@@ -1,9 +1,9 @@
-module Bound_Flasher(clk, reset, flick, LED/*, current_state, current_index*/);
+module Bound_Flasher(clk, reset, flick, LED);
 input clk, reset, flick;
 output reg [15:0]LED;
 
-/*output*/ reg [1:0]current_state;
-/*output*/ reg [2:0]current_index;
+reg [1:0]current_state;
+reg [2:0]current_index;
 
 reg [1:0]next_state;
 reg [2:0]next_index;
@@ -128,6 +128,7 @@ always@(posedge clk or negedge reset or posedge flick_trigger) begin
             end
             else begin
                 current_index <= current_index - 1;
+                LED <= LED;
             end
             current_state <= GO_UP;
         end
