@@ -48,10 +48,10 @@ module test_bench();
         #300 flick <= 1'b1;
         #2 flick <= 1'b0;
 
-        #150 flick <= 1'b1;
+        #153 flick <= 1'b1;
         #2 flick <= 1'b0;
 
-        #358 flick <= 1'b1;
+        #355 flick <= 1'b1;
         #2 flick <= 1'b0;
 
         #370 reset <= 1'b0;
