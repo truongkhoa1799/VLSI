@@ -8,8 +8,8 @@ Cadence Design Systems, Inc., and may be used and disclosed only as authorized
 in a license agreement controlling such use and disclosure.
 
 0
-CPU time     : 1.22    seconds
-Elapse time  : 20      seconds
+CPU time     : 1.23    seconds
+Elapse time  : 18      seconds
 Memory usage : 312.34  M bytes
 // Command: read_library slow.lib -lib -revised
 // Parsing file slow.lib ...
@@ -17,8 +17,8 @@ Memory usage : 312.34  M bytes
 // Note: (RTL9.26) Liberty pin with internal_node use default input_map (occurrence:16)
 // Note: Read Liberty library successfully
 0
-CPU time     : 1.56    seconds
-Elapse time  : 22      seconds
+CPU time     : 1.55    seconds
+Elapse time  : 19      seconds
 Memory usage : 329.96  M bytes
 // Command: read_design main.v -verilog -golden
 // Parsing file main.v ...
@@ -35,8 +35,8 @@ Memory usage : 329.96  M bytes
 // Warning: (RTL15.3) Clock interferes with data in sequential block (occurrence:1)
 // Note: Read VERILOG design successfully
 0
-CPU time     : 1.69    seconds
-Elapse time  : 25      seconds
+CPU time     : 1.68    seconds
+Elapse time  : 22      seconds
 Memory usage : 345.00  M bytes
 // Command: read_design Bound_Flasher_m.v -verilog -revised
 // Parsing file Bound_Flasher_m.v ...
@@ -44,8 +44,8 @@ Memory usage : 345.00  M bytes
 // Warning: (RTL14) Signal has input but it has no output (occurrence:21)
 // Note: Read VERILOG design successfully
 0
-CPU time     : 1.81    seconds
-Elapse time  : 28      seconds
+CPU time     : 1.80    seconds
+Elapse time  : 24      seconds
 Memory usage : 345.00  M bytes
 // Command: set_mapping_method -name only
 0
@@ -56,7 +56,7 @@ Memory usage : 345.00  M bytes
 // Processing Revised ...
 // Modeling Revised ...
 CPU time     : 2.07    seconds
-Elapse time  : 32      seconds
+Elapse time  : 28      seconds
 Memory usage : 369.75  M bytes
 // Mapping key points ...
 ================================================================================
@@ -91,7 +91,7 @@ Compared points      PO     DFF    DLAT      Total
 Equivalent           16     21     21        58      
 ================================================================================
 0
-CPU time     : 2.46    seconds
-Elapse time  : 34      seconds
-Memory usage : 397.38  M bytes
+CPU time     : 2.44    seconds
+Elapse time  : 30      seconds
+Memory usage : 397.51  M bytes
 // Command: exit

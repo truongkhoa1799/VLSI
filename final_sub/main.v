@@ -25,14 +25,14 @@ assign max_array[4] = 16'b0000000000111111;
 assign max_array[5] = 16'd0; 
 
 assign min_array[0] = 16'd0;
-assign min_array[1] = 16'b0000000000111111;
+assign min_array[1] = 16'b0000000000011111;
 assign min_array[2] = 16'd0;
 assign min_array[3] = 16'd0;
 assign min_array[4] = 16'd0;
 assign min_array[5] = 16'd0; 
 
 assign flick_pos[0] = 16'd0;
-assign flick_pos[1] = 16'b0000000000111111;
+assign flick_pos[1] = 16'b0000000000011111;
 
 assign final_index = 3'd6;
 

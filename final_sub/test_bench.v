@@ -42,13 +42,13 @@ module test_bench();
         #2 flick <= 1'b1;
         #1 flick <= 1'b0;
         
-        #256 flick <= 1'b1;
+        #266 flick <= 1'b1;
         #1 flick <= 1'b0;
 
-        #300 flick <= 1'b1;
+        #339 flick <= 1'b1;
         #2 flick <= 1'b0;
 
-        #153 flick <= 1'b1;
+        #168 flick <= 1'b1;
         #2 flick <= 1'b0;
 
         #355 flick <= 1'b1;
@@ -62,10 +62,10 @@ module test_bench();
         #20 flick <= 1'b1;
         #2 flick <= 1'b0;
 
-        #535 flick <= 1'b1;
+        #562 flick <= 1'b1;
         #1 flick <= 1'b0;
 
-        #100 flick <= 1'b1;
+        #73 flick <= 1'b1;
         #1 flick <= 1'b0;
 
         #11 flick <= 1'b1;
@@ -170,6 +170,24 @@ module test_bench();
         #9 flick <= 1'b1;
         #1 flick <= 1'b0;
 
+        #9 flick <= 1'b1;
+        #1 flick <= 1'b0;
+
+        #9 flick <= 1'b1;
+        #1 flick <= 1'b0;
+
+        #19 flick <= 1'b1;
+        #1 flick <= 1'b0;
+
+        #9 flick <= 1'b1;
+        #1 flick <= 1'b0;
+        
+        #9 flick <= 1'b1;
+        #1 flick <= 1'b0;
+
+        #9 flick <= 1'b1;
+        #1 flick <= 1'b0;
+
         #19 flick <= 1'b1;
         #1 flick <= 1'b0;
 
@@ -185,9 +203,6 @@ module test_bench();
         #9 flick <= 1'b1;
         #1 flick <= 1'b0;
 
-        #19 flick <= 1'b1;
-        #1 flick <= 1'b0;
-
         #9 flick <= 1'b1;
         #1 flick <= 1'b0;
 
@@ -200,24 +215,6 @@ module test_bench();
         #9 flick <= 1'b1;
         #1 flick <= 1'b0;
         
-        #9 flick <= 1'b1;
-        #1 flick <= 1'b0;
-
-        #9 flick <= 1'b1;
-        #1 flick <= 1'b0;
-
-        #9 flick <= 1'b1;
-        #1 flick <= 1'b0;
-
-        #9 flick <= 1'b1;
-        #1 flick <= 1'b0;
-
-        #9 flick <= 1'b1;
-        #1 flick <= 1'b0;
-        
-        #9 flick <= 1'b1;
-        #1 flick <= 1'b0;
-
         #9 flick <= 1'b1;
         #1 flick <= 1'b0;
 
